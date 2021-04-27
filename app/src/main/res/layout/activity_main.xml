@@ -4,18 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:padding="32dp"
     tools:context=".MainActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/bugCaseButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Bug Showcase"
+        app:layout_constraintBottom_toTopOf="@id/alternativeLMCaseButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:clipToPadding="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="5" />
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Button
+        android:id="@+id/alternativeLMCaseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Showcase Solution with Custom Layout Manager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bugCaseButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

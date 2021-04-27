@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nestedrecyclerswrapissue.WrappingLinearLayoutManager
 import com.example.nestedrecyclerswrapissue.databinding.ListItemCarouselBinding
 import com.example.nestedrecyclerswrapissue.nestedList.NestedListItemsAdapter
 
@@ -13,10 +14,12 @@ class CarouselViewHolder(private val binding: ListItemCarouselBinding) :
     fun bind(item: MainListItem) {
         (item as? MainListItem.CarouselItem)?.let {
             binding.list.apply {
-                layoutManager =
-                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false).apply {
-                        isMeasurementCacheEnabled = false
-                    }
+                layoutManager = if (item.useWrappingLayoutManager) {
+                    WrappingLinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                } else {
+                    LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                }
+
                 adapter = NestedListItemsAdapter().apply { submitList(item.data) }
             }
         }

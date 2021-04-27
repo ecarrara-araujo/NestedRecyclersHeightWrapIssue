@@ -6,5 +6,8 @@ enum class MainListItemType { NORMAL, CAROUSEL }
 
 sealed class MainListItem(val type: MainListItemType) {
     class NormalItem : MainListItem(MainListItemType.NORMAL)
-    data class CarouselItem(val data: List<NestedListItem>) : MainListItem(MainListItemType.CAROUSEL)
+    data class CarouselItem(
+        val data: List<NestedListItem>,
+        val useWrappingLayoutManager: Boolean = false
+    ) : MainListItem(MainListItemType.CAROUSEL)
 }
